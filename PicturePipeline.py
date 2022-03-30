@@ -1,7 +1,10 @@
+import time
+
 import cv2
 import numpy as np
 import os
 from PIL import Image
+from PIL import ImageOps
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import Configuration.Config as config
@@ -71,6 +74,7 @@ def runPipeline():
             if file.endswith("png") or file.endswith("jpg"):
                 path = os.path.join(root, file)
                 pil_image = Image.open(path)
+                pil_image = ImageOps.exif_transpose(pil_image) # if an image has an exif orientation tag use that (Stops from rotating my images weirdly)
                 size = (config.MAX_DIMENSION_SIZE, config.MAX_DIMENSION_SIZE)
                 final_image = pil_image.resize(size, Image.ANTIALIAS)
                 final_image.save(path)  # overwrite original pic with the modified one
@@ -97,7 +101,6 @@ def runPipeline():
                     trimBoxOutOfBounds(box)
                     boxList.append(box.astype("int"))
                     (startX, startY, endX, endY) = box.astype("int")
-
                     # draw boundry box
                     confidenceText = "{:2f}%".format(confidence * 100)
                     detectionCoordsText = f"{startX} {startY} {endX} {endY}"

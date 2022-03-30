@@ -1,12 +1,12 @@
 import os
 
-CUSTOM_MODEL_NAME = 'my_ssd_mobnet_320_pipeline_2k_run'
+CUSTOM_MODEL_NAME = 'my_ssd_mobnet_1000_pipeline_2k_run'
 PRETRAINED_MODEL_NAME = 'ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8'
 PRETRAINED_MODEL_URL = 'http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.tar.gz'
 TF_RECORD_SCRIPT_NAME = 'generate_tfrecord.py'
 LABEL_MAP_NAME = 'label_map.pbtxt'
 CONFIDENCE_RATING = 0.5
-MAX_DIMENSION_SIZE = 300
+MAX_DIMENSION_SIZE = 800
 HAAR_TRAINED_IMAGE_FILENAME = "Haar_Trained_Images.yml"
 HAAR_TRAINED_PICKLE_FILENAME = "labels.pickle"
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
