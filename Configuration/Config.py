@@ -24,7 +24,8 @@ paths = {
     'TFJS_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'workspace', 'models', CUSTOM_MODEL_NAME, 'tfjsexport'),
     'TFLITE_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'workspace', 'models',CUSTOM_MODEL_NAME, 'tfliteexport'),
     'PROTOC_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'protoc'),
-    'COLLECTED_IMAGES_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'workspace', 'images', 'collectedimages'),
+    'COLLECTED_IMAGES_PATH': os.path.join(BASE_DIR,'collectedimages'),
+    'TENSOR_IMAGES_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'workspace', 'images', 'collectedimages'),
     'HAAR_CASCADE_FOLDER_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'HaarCascade', 'cascades')
 }
 
