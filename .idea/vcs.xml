@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/TFODCourse" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TFRecognition" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/labelimg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/models" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/workspace/models" vcs="Git" />
+  </component>
+</project>
