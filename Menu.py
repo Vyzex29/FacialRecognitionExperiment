@@ -3,6 +3,8 @@ import TFRecognition.HaarCascade.HaarCascadesFaceTrain as HaarTrain
 import TFRecognition.HaarCascade.HaarRecognition as HaarRec
 import TensorRecognition as TensorRec
 import Configuration.Config as config
+import TensorTrain
+
 
 def printMenu():
     print("Menu:")
@@ -44,6 +46,7 @@ def userMenuInput():
                 showAlgorithmMenu = False
             elif algorithmMenu == "2":
                 print("Started learning Tensorflow")
+                TensorTrain.Train()
                 showAlgorithmMenu = False
             elif algorithmMenu == "3":
                 print("Started learning Caffe")

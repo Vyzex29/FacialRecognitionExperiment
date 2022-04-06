@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<annotation>
+   <folder>Valera</folder>
+   <filename>Valera.phone18.jpg</filename>
+   <path>C:\Users\User\PycharmProjects\tensorFlowObjectDetection\TFRecognition\Valera.phone18.jpg</path>
+   <source>
+      <database>Unknown</database>
+   </source>
+   <size>
+      <width>800</width>
+      <height>800</height>
+      <depth>3</depth>
+   </size>
+   <segmented>0</segmented>
+   <object>
+      <name>Valera</name>
+      <pose>Unspecified</pose>
+      <truncated>0</truncated>
+      <difficult>0</difficult>
+      <bndbox>
+         <xmin>267</xmin>
+         <ymin>215</ymin>
+         <xmax>626</xmax>
+         <ymax>597</ymax>
+      </bndbox>
+   </object>
+</annotation>

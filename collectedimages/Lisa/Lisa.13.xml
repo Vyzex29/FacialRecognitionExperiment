@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<annotation>
+   <folder>Lisa</folder>
+   <filename>Lisa.13.jpg</filename>
+   <path>C:\Users\User\PycharmProjects\tensorFlowObjectDetection\TFRecognition\Lisa.13.jpg</path>
+   <source>
+      <database>Unknown</database>
+   </source>
+   <size>
+      <width>800</width>
+      <height>800</height>
+      <depth>3</depth>
+   </size>
+   <segmented>0</segmented>
+   <object>
+      <name>Lisa</name>
+      <pose>Unspecified</pose>
+      <truncated>0</truncated>
+      <difficult>0</difficult>
+      <bndbox>
+         <xmin>101</xmin>
+         <ymin>247</ymin>
+         <xmax>171</xmax>
+         <ymax>399</ymax>
+      </bndbox>
+   </object>
+</annotation>
