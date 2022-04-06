@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<annotation>
+   <folder>Eminem</folder>
+   <filename>Eminem.23.jpg</filename>
+   <path>C:\Users\User\PycharmProjects\tensorFlowObjectDetection\TFRecognition\Eminem.23.jpg</path>
+   <source>
+      <database>Unknown</database>
+   </source>
+   <size>
+      <width>800</width>
+      <height>800</height>
+      <depth>3</depth>
+   </size>
+   <segmented>0</segmented>
+   <object>
+      <name>Eminem</name>
+      <pose>Unspecified</pose>
+      <truncated>0</truncated>
+      <difficult>0</difficult>
+      <bndbox>
+         <xmin>316</xmin>
+         <ymin>191</ymin>
+         <xmax>571</xmax>
+         <ymax>494</ymax>
+      </bndbox>
+   </object>
+</annotation>
