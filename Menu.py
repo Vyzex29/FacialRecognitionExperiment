@@ -1,3 +1,4 @@
+import PackageInstaller
 import PicturePipeline
 import TFRecognition.HaarCascade.HaarCascadesFaceTrain as HaarTrain
 import TFRecognition.HaarCascade.HaarRecognition as HaarRec
@@ -77,6 +78,8 @@ def userMenuInput():
                 print("Choose from the recognition menu")
     elif menuItem == "4":
         showMenu = False
+    elif menuItem == "5":
+        PackageInstaller.installDependencies()
     else:
        print("Please choose a menu item")
     return showMenu

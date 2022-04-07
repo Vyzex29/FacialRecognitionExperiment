@@ -26,7 +26,8 @@ paths = {
     'PROTOC_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'protoc'),
     'COLLECTED_IMAGES_PATH': os.path.join(BASE_DIR,'collectedimages'),
     'TENSOR_IMAGES_PATH': os.path.join(BASE_DIR,'TFRecognition', 'Tensorflow', 'workspace', 'images', 'collectedimages'),
-    'HAAR_CASCADE_FOLDER_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'HaarCascade', 'cascades')
+    'HAAR_CASCADE_FOLDER_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'HaarCascade', 'cascades'),
+    'LABELIMG_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'Tensorflow', 'labelimg')
 }
 
 files = {
