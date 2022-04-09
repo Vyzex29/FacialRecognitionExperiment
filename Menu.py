@@ -34,7 +34,7 @@ def userMenuInput():
     menuItem = input()
     if menuItem == "1":
         print("Controls: \n Press Q, while having the pictureBox opened to process next image")
-        PicturePipeline.runPipeline()
+        PicturePipeline.runPicturePipeline()
     elif menuItem == "2":
         showAlgorithmMenu = True
         while showAlgorithmMenu:
@@ -79,7 +79,7 @@ def userMenuInput():
     elif menuItem == "4":
         showMenu = False
     elif menuItem == "5":
-        PackageInstaller.installDependencies()
+        PicturePipeline.CreateYOLOLabelClasses()
     else:
        print("Please choose a menu item")
     return showMenu

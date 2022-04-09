@@ -7,5 +7,6 @@
     <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/labelimg" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/models" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TFRecognition/Tensorflow/workspace/models" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/yolov5" vcs="Git" />
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/tensorFlowObjectDetection.iml" filepath="$PROJECT_DIR$/.idea/tensorFlowObjectDetection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bachelor.iml" filepath="$PROJECT_DIR$/.idea/bachelor.iml" />
     </modules>
   </component>
 </project>

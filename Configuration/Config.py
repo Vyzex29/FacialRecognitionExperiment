@@ -40,3 +40,7 @@ files = {
     'HAAR_CASCADE_XML_PATH': os.path.join(paths['HAAR_CASCADE_FOLDER_PATH'], 'data', 'haarcascade_frontalface_default.xml'),
     'HAAR_CASCADE_PICKLE_PATH': os.path.join(paths['HAAR_CASCADE_FOLDER_PATH'], HAAR_TRAINED_PICKLE_FILENAME)
 }
+yolo = {
+    'SAVE_IMAGE_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'YOLO_IMAGES'),
+    'SAVE_LABELS_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'YOLO_LABELS')
+}

@@ -19,6 +19,11 @@ def installDependencies():
             print("Created directory at: " + path)
             os.mkdir(path)
 
+    for path in config.yolo.values():
+        if not os.path.exists(path):
+            print("Created directory at: " + path)
+            os.mkdir(path)
+
     for dependency in dependencies:
         install(dependency)
 
