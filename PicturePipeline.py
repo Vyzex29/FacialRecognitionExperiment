@@ -60,7 +60,7 @@ def writeDetectionBoxXMLForImage(xmlSavePath, absoluteImagePath, imageName, imag
         f.write(xmlstr)
     print("Created imageXml at: ", saveLocation)
 
-def voc_to_yolo(xmin, ymin, xmax, ymax, image_width, image_height, index):
+def voc_to_yolo(xmin, ymin, xmax, ymax, image_width, image_height, index): # https://stackoverflow.com/questions/64581692/how-to-convert-pascal-voc-to-yolo
     x_coord = (xmin + xmax) / 2 / image_width
     y_coord = (ymin + ymax) / 2 / image_height
     shape_width = (xmax - xmin) / image_width
@@ -114,15 +114,15 @@ def runPicturePipeline():
                 size = (config.MAX_DIMENSION_SIZE, config.MAX_DIMENSION_SIZE)
                 final_image = pil_image.resize(size, Image.ANTIALIAS)
                 saveTensorDirectory = os.path.join(config.paths['TENSOR_IMAGES_PATH'], os.path.basename(root))
-                saveYOLOPHOTODirectory = os.path.join(config.yolo['SAVE_IMAGE_PATH'], os.path.basename(root))
-                saveYOLOLabelDirectory = os.path.join(config.yolo['SAVE_LABELS_PATH'], os.path.basename(root))
+                saveYOLOPHOTODirectory = config.yolo['SAVE_IMAGE_PATH']
+                saveYOLOLabelDirectory = config.yolo['SAVE_LABELS_PATH']
                 if not os.path.exists(saveTensorDirectory):
                     os.mkdir(saveTensorDirectory)
                 if not os.path.exists(saveYOLOPHOTODirectory):
                     os.mkdir(saveYOLOPHOTODirectory)
                 if not os.path.exists(saveYOLOLabelDirectory):
                     os.mkdir(saveYOLOLabelDirectory)
-                saveImage = final_image.copy()  # overwrite original pic with the modified one
+                saveImage = final_image.copy()  # copy the modified pic to desired paths
                 saveTensorPath = os.path.join(saveTensorDirectory, file)
                 saveYoloPath = os.path.join(saveYOLOPHOTODirectory, file)
                 saveImage.save(saveTensorPath)
@@ -202,7 +202,7 @@ def runPicturePipeline():
                     print("These detectionBoxes were kept: ", selectedBoxList)
                     print('Press any key to continue')
                     cv2.waitKey(0)
-                    print("Saving XML for" + file)
+
                     writeDetectionBoxXMLForImage(saveTensorDirectory, os.path.abspath(file), file, w, h, selectedBoxList)
                     writeDetectionBoxYOLOForImage(saveYOLOLabelDirectory, file, w, h, selectedBoxList)
                     continue
@@ -217,3 +217,16 @@ def runPicturePipeline():
                     if key == ord("q"):
                         cv2.destroyAllWindows()
                         break
+
+def runSiamesePicturePipeline():
+    for root, dirs, dirfiles in os.walk(config.paths['COLLECTED_IMAGES_PATH']):
+        for file in dirfiles:
+            if file.endswith("png") or file.endswith("jpg"):
+                imagePath = os.path.join(root, file)
+                pil_image = Image.open(imagePath)
+                pil_image = ImageOps.exif_transpose(pil_image)  # if an image has an exif orientation tag use that (Stops from rotating my images weirdly)
+                size = (250, 250) # 250 due to lwh picture being 250x250
+                final_image = pil_image.resize(size)
+                savePositiveDirectory = os.path.join(config.siamese['POSITIVE_PATH'], file)
+                saveImage = final_image.copy()
+                saveImage.save(savePositiveDirectory)

@@ -41,6 +41,13 @@ files = {
     'HAAR_CASCADE_PICKLE_PATH': os.path.join(paths['HAAR_CASCADE_FOLDER_PATH'], HAAR_TRAINED_PICKLE_FILENAME)
 }
 yolo = {
-    'SAVE_IMAGE_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'YOLO_IMAGES'),
-    'SAVE_LABELS_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'YOLO_LABELS')
+    'SAVE_IMAGE_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'images'),
+    'SAVE_LABELS_PATH': os.path.join(BASE_DIR, 'TFRecognition', 'YOLO', 'labels')
+}
+
+siamese = {
+    'SIAMESE_FOLDER_PATH': os.path.join(BASE_DIR, 'Siamese', 'data'),
+    'POSITIVE_PATH': os.path.join(BASE_DIR, 'Siamese', 'data', 'positive'),
+    'NEGATIVE_PATH': os.path.join(BASE_DIR, 'Siamese', 'data', 'negative'),
+    'ANCHOR_PATH': os.path.join(BASE_DIR, 'Siamese', 'data', 'anchor')
 }
