@@ -3,9 +3,10 @@ import PicturePipeline
 import TFRecognition.HaarCascade.HaarCascadesFaceTrain as HaarTrain
 import TFRecognition.HaarCascade.HaarRecognition as HaarRec
 import TensorRecognition as TensorRec
+import TensorRecognitionImages as TensorRecImg
 import Configuration.Config as config
 import TensorTrain
-
+import YoloImageRecognition as yir
 
 def printMenu():
     print("Menu:")
@@ -50,9 +51,10 @@ def userMenuInput():
                 TensorTrain.Train()
                 showAlgorithmMenu = False
             elif algorithmMenu == "3":
-                print("Started learning Caffe")
+                print("Started learning Yolov5")
                 showAlgorithmMenu = False
             elif algorithmMenu == "4":
+                print("Started learning Siamese")
                 showAlgorithmMenu = False
             else:
                 print("Choose from the algorithm menu")
@@ -70,16 +72,20 @@ def userMenuInput():
                 TensorRec.Start()
                 showRecognitionMenu = False
             elif recognitionMenu == "3":
-                print("Caffe Recognition started")
+                print("Tensor images Recognition started")
+                TensorRecImg.Start()
                 showRecognitionMenu = False
             elif showRecognitionMenu == "4":
                 showRecognitionMenu = False
+
             else:
                 print("Choose from the recognition menu")
     elif menuItem == "4":
         showMenu = False
     elif menuItem == "5":
-        PicturePipeline.CreateYOLOLabelClasses()
+        yir.Start()
+    elif menuItem == "6":
+        TensorRecImg.StartTest()
     else:
        print("Please choose a menu item")
     return showMenu

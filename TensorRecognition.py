@@ -24,7 +24,7 @@ def Start():
         return detections
 
 
-    ckpt.restore(os.path.join(config.paths['CHECKPOINT_PATH'], 'ckpt-3')).expect_partial()
+    ckpt.restore(os.path.join(config.paths['CHECKPOINT_PATH'], 'ckpt-6')).expect_partial()
     category_index = label_map_util.create_category_index_from_labelmap(config.files['LABELMAP'])
 
     cap = cv2.VideoCapture(0)
@@ -57,7 +57,7 @@ def Start():
             category_index,
             use_normalized_coordinates=True,
             max_boxes_to_draw=5,
-            min_score_thresh=.85,
+            min_score_thresh=.3,
             agnostic_mode=False)
 
         cv2.imshow('object detection', cv2.resize(image_np_with_detections, (1024, 800)))

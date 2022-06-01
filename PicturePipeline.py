@@ -68,12 +68,10 @@ def voc_to_yolo(xmin, ymin, xmax, ymax, image_width, image_height, index): # htt
     yoloString = f"{index} {x_coord} {y_coord} {shape_width} {shape_height}\n"
     return yoloString
 
-def writeDetectionBoxYOLOForImage(txtSavePath, imageName, imageWidth, imageHeight, detectedBoxes):
+def writeDetectionBoxYOLOForImage(txtSavePath, imageName, imageWidth, imageHeight, detectedBoxes, imageLabel):
     txtFilename = os.path.splitext(imageName)[0] + ".txt"
     saveLocation = os.path.join(txtSavePath, txtFilename)
     YoloString = ""
-    dirname = os.path.dirname(saveLocation)
-    imageLabel = os.path.basename(dirname)
     labels = tt.GetLabels()
     key = 0
     for label in labels:
@@ -91,6 +89,8 @@ def trimBoxOutOfBounds(box):
     for i in range(len(box)):
         if box[i] > config.MAX_DIMENSION_SIZE:
             box[i] = config.MAX_DIMENSION_SIZE
+        if box[i] < 0:
+            box[i] = 0
 
 def CreateYOLOLabelClasses():
     labels = tt.GetLabels()
@@ -107,8 +107,10 @@ def runPicturePipeline():
     CreateYOLOLabelClasses()
     for root, dirs, dirfiles in os.walk(config.paths['COLLECTED_IMAGES_PATH']):
         for file in dirfiles:
-            if file.endswith("png") or file.endswith("jpg"):
+            if file.endswith("png") or file.endswith("jpg") or file.endswith("JPG") or file.endswith("jpeg"):
+                print(f"Operating with {file}")
                 imagePath = os.path.join(root, file)
+                imageLabel = os.path.basename(root)
                 pil_image = Image.open(imagePath)
                 pil_image = ImageOps.exif_transpose(pil_image) # if an image has an exif orientation tag use that (Stops from rotating my images weirdly)
                 size = (config.MAX_DIMENSION_SIZE, config.MAX_DIMENSION_SIZE)
@@ -125,8 +127,6 @@ def runPicturePipeline():
                 saveImage = final_image.copy()  # copy the modified pic to desired paths
                 saveTensorPath = os.path.join(saveTensorDirectory, file)
                 saveYoloPath = os.path.join(saveYOLOPHOTODirectory, file)
-                saveImage.save(saveTensorPath)
-                saveImage.save(saveYoloPath)
                 (h, w) = final_image.size
                 final_image_array = np.array(final_image)
                 net = cv2.dnn.readNetFromCaffe(config.files["CAFFE_PROTOTXT"], config.files["CAFFE_MODEL"])
@@ -172,7 +172,6 @@ def runPicturePipeline():
                         confirmation = input("Press y for yes or n for no")
                         if confirmation == 'y':
                             os.remove(imagePath)
-                            os.remove(saveTensorPath)
                             break
                         elif confirmation == 'n':
                             break
@@ -204,11 +203,15 @@ def runPicturePipeline():
                     cv2.waitKey(0)
 
                     writeDetectionBoxXMLForImage(saveTensorDirectory, os.path.abspath(file), file, w, h, selectedBoxList)
-                    writeDetectionBoxYOLOForImage(saveYOLOLabelDirectory, file, w, h, selectedBoxList)
+                    writeDetectionBoxYOLOForImage(saveYOLOLabelDirectory, file, w, h, selectedBoxList, imageLabel)
+                    saveImage.save(saveTensorPath)
+                    saveImage.save(saveYoloPath)
                     continue
 
                 writeDetectionBoxXMLForImage(saveTensorDirectory, os.path.abspath(file), file, w, h, boxList)
-                writeDetectionBoxYOLOForImage(saveYOLOLabelDirectory, file, w, h, boxList)
+                writeDetectionBoxYOLOForImage(saveYOLOLabelDirectory, file, w, h, boxList, imageLabel)
+                saveImage.save(saveTensorPath)
+                saveImage.save(saveYoloPath)
                 while True:
                     cv2.imshow(file, final_image_array)
                     key = cv2.waitKey(1) & 0xFF
